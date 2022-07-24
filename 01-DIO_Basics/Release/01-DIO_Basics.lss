@@ -3,7 +3,7 @@
 
 Sections:
 Idx Name          Size      VMA       LMA       File off  Algn
-  0 .text         000000a2  00000000  00000000  00000054  2**1
+  0 .text         00000092  00000000  00000000  00000054  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
 
 Disassembly of section .text:
@@ -39,40 +39,32 @@ Disassembly of section .text:
   5c:	de bf       	out	0x3e, r29	; 62
   5e:	cd bf       	out	0x3d, r28	; 61
   60:	0e 94 36 00 	call	0x6c	; 0x6c <main>
-  64:	0c 94 4f 00 	jmp	0x9e	; 0x9e <_exit>
+  64:	0c 94 47 00 	jmp	0x8e	; 0x8e <_exit>
 
 00000068 <__bad_interrupt>:
   68:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
 
 0000006c <main>:
-  6c:	8f e0       	ldi	r24, 0x0F	; 15
-  6e:	8a bb       	out	0x1a, r24	; 26
-  70:	61 e0       	ldi	r22, 0x01	; 1
-  72:	48 ec       	ldi	r20, 0xC8	; 200
-  74:	50 e0       	ldi	r21, 0x00	; 0
-  76:	6b bb       	out	0x1b, r22	; 27
-  78:	20 e0       	ldi	r18, 0x00	; 0
-  7a:	30 e0       	ldi	r19, 0x00	; 0
-  7c:	0d c0       	rjmp	.+26     	; 0x98 <main+0x2c>
-  7e:	fa 01       	movw	r30, r20
-  80:	31 97       	sbiw	r30, 0x01	; 1
-  82:	f1 f7       	brne	.-4      	; 0x80 <main+0x14>
-  84:	01 97       	sbiw	r24, 0x01	; 1
-  86:	d9 f7       	brne	.-10     	; 0x7e <main+0x12>
-  88:	8b b3       	in	r24, 0x1b	; 27
-  8a:	88 0f       	add	r24, r24
-  8c:	8b bb       	out	0x1b, r24	; 27
-  8e:	2f 5f       	subi	r18, 0xFF	; 255
-  90:	3f 4f       	sbci	r19, 0xFF	; 255
-  92:	24 30       	cpi	r18, 0x04	; 4
-  94:	31 05       	cpc	r19, r1
-  96:	79 f3       	breq	.-34     	; 0x76 <main+0xa>
-  98:	84 ec       	ldi	r24, 0xC4	; 196
-  9a:	99 e0       	ldi	r25, 0x09	; 9
-  9c:	f0 cf       	rjmp	.-32     	; 0x7e <main+0x12>
+  6c:	d0 9a       	sbi	0x1a, 0	; 26
+  6e:	d1 98       	cbi	0x1a, 1	; 26
+  70:	d9 9a       	sbi	0x1b, 1	; 27
+  72:	20 e4       	ldi	r18, 0x40	; 64
+  74:	3c e9       	ldi	r19, 0x9C	; 156
+  76:	41 e0       	ldi	r20, 0x01	; 1
+  78:	c9 99       	sbic	0x19, 1	; 25
+  7a:	fe cf       	rjmp	.-4      	; 0x78 <main+0xc>
+  7c:	c9 9b       	sbis	0x19, 1	; 25
+  7e:	fe cf       	rjmp	.-4      	; 0x7c <main+0x10>
+  80:	c9 01       	movw	r24, r18
+  82:	01 97       	sbiw	r24, 0x01	; 1
+  84:	f1 f7       	brne	.-4      	; 0x82 <main+0x16>
+  86:	8b b3       	in	r24, 0x1b	; 27
+  88:	84 27       	eor	r24, r20
+  8a:	8b bb       	out	0x1b, r24	; 27
+  8c:	f5 cf       	rjmp	.-22     	; 0x78 <main+0xc>
 
-0000009e <_exit>:
-  9e:	f8 94       	cli
+0000008e <_exit>:
+  8e:	f8 94       	cli
 
-000000a0 <__stop_program>:
-  a0:	ff cf       	rjmp	.-2      	; 0xa0 <__stop_program>
+00000090 <__stop_program>:
+  90:	ff cf       	rjmp	.-2      	; 0x90 <__stop_program>
