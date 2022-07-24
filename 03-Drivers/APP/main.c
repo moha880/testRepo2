@@ -20,7 +20,7 @@ int main(void)
 
 	for(u8 i=0 ; i<10 ; i++){
 
-		SSD_vDisplayNum(i);
+		SSD_vDisplayNum(1,i);
 		_delay_ms(250);
 	}
 

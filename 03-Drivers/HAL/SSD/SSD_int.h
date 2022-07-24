@@ -17,9 +17,11 @@
 #define SSD_TYPE   COM_CATHODE
 #define SSD_PORT   DIO_PORTC
 
+#define SSD_1  1
+#define SSD_2  2
 
 void SSD_vInit(void);   //99% mn el drivers bib2a fiha tazbeet ll48l ,mdrstna bn3tbrha void
-void SSD_vDisplayNum(u8 A_u8Num);
+void SSD_vDisplayNum(u8 SSDId , u8 A_u8Num);
 void SSD_vTurnOff(void);
 
 

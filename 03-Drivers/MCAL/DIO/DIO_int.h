@@ -8,6 +8,16 @@
 #ifndef MCAL_DIO_DIO_INT_H_
 #define MCAL_DIO_DIO_INT_H_
 
+
+typedef enum
+{
+	OK=1,
+	NOK=0
+
+
+}Error_t;
+
+
 #define DIO_PORTA 0
 #define DIO_PORTB 1
 #define DIO_PORTC 2
@@ -30,13 +40,13 @@
 #define DIO_LOW  0
 
 
-void DIO_vSetPinDIR(u8 A_u8PortNo , u8 A_u8PinNo , u8 A_u8Dir);
-void DIO_vSetPinVal(u8 A_u8PortNo , u8 A_u8PinNo , u8 A_u8Val);
+Error_t DIO_vSetPinDIR(u8 A_u8PortNo , u8 A_u8PinNo , u8 A_u8Dir);
+void MDIO_vSetPinVal(u8 A_u8PortNo , u8 A_u8PinNo , u8 A_u8Val);
 u8   DIO_u8GetPinVal(u8 A_u8PortNo , u8 A_u8PinNo);
 
 
 
-void DIO_vSetPortDIR(u8 A_u8PortNo , u8 A_u8Dir);
+void MDIO_vSetPortDIR(u8 A_u8PortNo , u8 A_u8Dir);
 void DIO_vSetPortVal(u8 A_u8PortNo , u8 A_u8Val);
 u8   DIO_u8GetPortVal(u8 A_u8PortNo );
 

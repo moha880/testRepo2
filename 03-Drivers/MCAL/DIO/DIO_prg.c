@@ -15,8 +15,9 @@
 
 
 
-void DIO_vSetPinDIR(u8 A_u8PortNo , u8 A_u8PinNo , u8 A_u8Dir)
+Error_t MDIO_vSetPinDIR(u8 A_u8PortNo , u8 A_u8PinNo , u8 A_u8Dir)
 {
+	Error_t err= OK;
 	if (A_u8Dir== DIO_OUTPUT)
 	{
 		switch(A_u8PortNo)
@@ -53,8 +54,14 @@ void DIO_vSetPinDIR(u8 A_u8PortNo , u8 A_u8PinNo , u8 A_u8Dir)
 				break;
 		}
 	}
+	else{
+
+
+		err= NOK;
+	}
+	return err;
 }
-void DIO_vSetPinVal(u8 A_u8PortNo , u8 A_u8PinNo , u8 A_u8Val)
+void MDIO_vSetPinVal(u8 A_u8PortNo , u8 A_u8PinNo , u8 A_u8Val)
 {
 
 	if (A_u8Val== DIO_HIGH)
@@ -119,7 +126,7 @@ u8   DIO_u8GetPinVal(u8 A_u8PortNo , u8 A_u8PinNo)
 
 
 
-void DIO_vSetPortDIR(u8 A_u8PortNo , u8 A_u8Dir)
+void MDIO_vSetPortDIR(u8 A_u8PortNo , u8 A_u8Dir)
 {
 	switch(A_u8PortNo)
 	{
@@ -137,7 +144,7 @@ void DIO_vSetPortDIR(u8 A_u8PortNo , u8 A_u8Dir)
 			break;
 	}
 }
-void DIO_vSetPortVal(u8 A_u8PortNo , u8 A_u8Val)
+void MDIO_vSetPortVal(u8 A_u8PortNo , u8 A_u8Val)
 {
 	switch(A_u8PortNo)
 	{

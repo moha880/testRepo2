@@ -25,20 +25,20 @@ static const u8 CGS_u8SSD_Nums[] ={
 
 void SSD_vInit(void){
 
-	DIO_vSetPortDIR(SSD_PORT,0xff);
+	MDIO_vSetPortDIR(SSD_PORT,0xff);
 }
 
 
-void SSD_vDisplayNum(u8 A_u8Num)
+void SSD_vDisplayNum(u8 SSDId , u8 A_u8Num)
 {
 	/*input validation*/
 
 	if (A_u8Num < 10)
 	{
 #if SSD_TYPE==COM_CATHODE
-		DIO_vSetPortVal(SSD_PORT , CGS_u8SSD_Nums[A_u8Num]);
+		MDIO_vSetPortVal(SSD_PORT , CGS_u8SSD_Nums[A_u8Num]);
 #elif SSD_TYPE==COM_ANODE
-		DIO_vSetPortVal(SSD_PORT , ~CGS_u8SSD_Nums[A_u8Num]);
+		MDIO_vSetPortVal(SSD_PORT , ~CGS_u8SSD_Nums[A_u8Num]);
 #endif
 
 	}
@@ -50,9 +50,9 @@ void SSD_vTurnOff(void)
 {
 #if SSD_TYPE==COM_CATHODE
 
-	DIO_vSetPortVal(SSD_PORT,0);
+	MDIO_vSetPortVal(SSD_PORT,0);
 #elif SSD_TYPE==COM_ANODE
-	DIO_vSetPortVal(SSD_PORT,0xff);
+	MDIO_vSetPortVal(SSD_PORT,0xff);
 #endif
 
 }
